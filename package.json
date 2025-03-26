@@ -1,0 +1,35 @@
+{
+  "name": "json-response-gen",
+  "version": "0.0.1",
+  "description": "Repo for some helper functions to generate random data when you know the shape of data samples but cant get it",
+  "author": "Emzyx",
+  "contributors": [
+    "dianaYepes"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.9.0",
+    "jest": "^29.7.0",
+    "prettier": "3.3.3",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "randexp": "^0.5.3"
+  },
+  "keywords": [
+    "json",
+    "testing",
+    "generation"
+  ]
+}
