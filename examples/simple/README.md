@@ -1,8 +1,8 @@
-<div align="center">
+<div style="width:fit-content" align="center">
 
 ### Example with Simple Object using various classes
 
-<table style="width:max-content">
+<table style="width:fit-content">
   <tr >
     <td > Shape </td> 
     <td > Example Result </td>
@@ -94,4 +94,7 @@ const OBJECT = {
 
   </td>
   </tr>
+
+</table>
+
 </div>

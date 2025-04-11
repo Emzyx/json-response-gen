@@ -47,7 +47,7 @@ It currently runs the template by default within `__jgen__/templates/index.js`, 
 
 After defining that you can add the following to your `package.json` to be able to generate off of `npm run jgen`
 
-You can define a different location to look for the template `index.js` in through the `--dir` flag i.e. `--dir="__template__"`
+You can define a different location to look for the template `index.js` through the `--dir` flag i.e. `--dir="__template__"`
 
 ```
 ...
@@ -60,7 +60,7 @@ You can define a different location to look for the template `index.js` in throu
 
 ### Small Example
 
-After creating the `index.js` file above in `__jgen__/templates/` you can define something like this to it. You can scale it to however large and complex you need it to be.
+After creating the `index.js` file above in `__jgen__/templates/` you can define something like this in it. You can scale it to however large and complex you need it to be.
 
 ```typescript
 const {

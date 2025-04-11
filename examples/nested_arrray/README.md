@@ -1,14 +1,14 @@
-<div align="center">
+<div style="width:fit-content" align="center">
 
 ### Example with Nested Array with Potential Supplement
 
-<table style="width:max-content">
+<table>
   <tr >
     <td > Shape </td> 
     <td > Example Result </td>
   </tr>
 
-  <tr>
+  <tr >
   <td >
 
 ```typescript
@@ -28,7 +28,7 @@ const SMALL_NESTED_ARRAY = [
 ```
 
   </td>
-  <td >
+  <td>
 
 ```javascript
 [
@@ -68,6 +68,15 @@ const SMALL_NESTED_ARRAY = [
   </td>
   </tr>
 
+</table>
+
+<table style="width:fit-content">
+
+  <tr >
+    <td > Shape </td> 
+    <td > Example Result </td>
+  </tr>
+
   <tr>
   <td >
 
@@ -83,7 +92,7 @@ const SUPPLEMENT = {
           rando: LOWER_ALPHA(10),
         },
         {
-          baseArrayPath: '?.accounts', // <- will look respective to parent array, i.e. root arr
+          baseArrayPath: '?.accounts',
           sharedKeysMap: {
             toShare: ['accountNumber'],
             toRename: { token: ['accountToken'] },
@@ -202,5 +211,7 @@ const SUPPLEMENT = {
 
   </td>
   </tr>
+
+</table>
 
 </div>
