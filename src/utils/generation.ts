@@ -1,10 +1,10 @@
 import { Repetition } from '../options';
-import { BuildOptions } from '../types';
+import { BuildProps } from '../types';
 import { implementsOptions } from './utils';
 
 export const handleValue = (
   value: any,
-  buildOptions: BuildOptions,
+  buildOptions: BuildProps,
   extraInfo?: {}
 ): any => {
   if (implementsOptions(value)) {
@@ -17,10 +17,9 @@ export const handleValue = (
   return value;
 };
 
-// Maybe Pss down some sharedOptions obj that contains map obj, shared paths, and more
 export const handleObject = (
   shape: object,
-  buildOptions: BuildOptions,
+  buildOptions: BuildProps,
   extraInfo?: {}
 ): object => {
   const keyArr = Object.keys(shape);
@@ -29,9 +28,16 @@ export const handleObject = (
   }
   const result = keyArr.reduce((prev: object, currKey: string): object => {
     const currVal: any = shape[currKey as keyof typeof shape];
+    const currResult = handleValue(currVal, buildOptions, extraInfo);
+    let _currResult;
+    if (currVal?.shouldSpread && currResult instanceof Object) {
+      _currResult = currResult;
+    } else {
+      _currResult = { [currKey]: currResult };
+    }
     return {
       ...prev,
-      [currKey]: handleValue(currVal, buildOptions, extraInfo),
+      ..._currResult,
     };
   }, {});
 

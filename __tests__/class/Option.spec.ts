@@ -2,15 +2,16 @@ import { ALPHA, NUMERIC, Option, SELECTION_TYPES } from '../../src';
 
 describe('Option', () => {
   it('simple value test', () => {
-    const option = new Option([true, false], SELECTION_TYPES.IN_ORDER);
+    const option = new Option([true, false], {
+      selectionType: SELECTION_TYPES.IN_ORDER,
+    });
     const item = option.build({});
     expect(option.test(item)).toEqual(true);
   });
   it('regex test', () => {
-    const option = new Option(
-      [NUMERIC(10), ALPHA(10)],
-      SELECTION_TYPES.IN_ORDER
-    );
+    const option = new Option([NUMERIC(10), ALPHA(10)], {
+      selectionType: SELECTION_TYPES.IN_ORDER,
+    });
     const item = option.build({});
     expect(option.test(item)).toEqual(true);
   });

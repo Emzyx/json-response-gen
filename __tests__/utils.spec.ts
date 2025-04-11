@@ -1,5 +1,5 @@
 import {
-  DEFAULT_DIR,
+  DEFAULT_MOCKS_DIR,
   getDay,
   implementsOptions,
   isLeapYear,
@@ -102,12 +102,12 @@ describe('utils tests', () => {
     it('should return valid path', () => {
       const fileName = 'fileName.txt';
       const path = prepDirs(fileName);
-      expect(path).toEqual(`${DEFAULT_DIR}/${fileName}`);
+      expect(path).toEqual(`${DEFAULT_MOCKS_DIR}/${fileName}`);
     });
     it('should return valid path', () => {
       const fileName = '/boogster/fileName.txt';
       const path = prepDirs(fileName);
-      expect(path).toEqual(`${DEFAULT_DIR}${fileName}`);
+      expect(path).toEqual(`${DEFAULT_MOCKS_DIR}${fileName}`);
     });
   });
 });

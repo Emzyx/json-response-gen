@@ -1,5 +1,5 @@
 import { NUMERIC } from '../utils/regexOptions';
-import { BuildOptions, Options } from '../types';
+import { BuildProps, Options } from '../types';
 import { conditionalDatePrefix, getDay } from '../utils';
 
 /**
@@ -20,15 +20,20 @@ export class DateRange implements Options {
   /**
    * @returns date in MM/DD/YYY
    */
-  build(buildOptions: BuildOptions, extraInfo?: {}): string {
-    const month = (Number(NUMERIC(2).build(buildOptions)) % 12) + 1;
+  build(buildOptions?: BuildProps, extraInfo?: {}): string {
+    const month = (Number(NUMERIC(2).build()) % 12) + 1;
     const mult = [-1, 1][this.maxToday ? 0 : Math.floor(Math.random() * 2)];
     const year =
       new Date().getFullYear() + mult * Math.round(Math.random() * this.range);
-    const day = getDay(month, year);
+    const day = Math.floor(Math.random() * getDay(month, year)) + 1;
 
     return `${conditionalDatePrefix(month)}/${conditionalDatePrefix(day)}/${year}`;
   }
+
+  /**
+   * Quick alias for the build function
+   */
+  b = this.build;
 
   test(value: string) {
     const reg = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;

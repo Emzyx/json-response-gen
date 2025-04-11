@@ -1,9 +1,10 @@
 import { writeFile } from 'fs';
-import { DEFAULT_DIR, SELECTION_TYPES } from '../constants';
-import { BuildOptions, InputType, OutputType } from '../types';
+import { SELECTION_TYPES } from '../constants';
+import { BuildProps, InputType, OutputType } from '../types';
 import { get, handleValue, noop, prepDirs } from '../utils';
+import kleur from 'kleur';
 
-const defaultOptions: BuildOptions = {
+const defaultOptions: BuildProps = {
   repetitions: 3,
   selectionType: SELECTION_TYPES.IN_ORDER,
   addSharedValue: noop,
@@ -16,18 +17,16 @@ const defaultOptions: BuildOptions = {
  */
 export class Builder {
   results: OutputType[];
-  path?: string;
-  options: BuildOptions;
+  options: BuildProps;
   valueMap: Map<string, any>;
 
   /**
    *
    * @param path  Path in which to save the files under
-   * @param {BuildOptions} options Build options to configure the builder
+   * @param {BuildProps} options Build options to configure the builder
    *
    */
-  constructor(path?: string, options?: BuildOptions) {
-    this.path = path;
+  constructor(options?: BuildProps) {
     this.valueMap = new Map<string, any>();
     this.results = new Array();
     this.options = {
@@ -86,9 +85,15 @@ export class Builder {
 
     const shouldSave = !!fileName;
     if (shouldSave) {
-      const filePath = prepDirs(fileName);
+      const filePath = prepDirs(fileName, this.options?.writeDir);
       writeFile(`${filePath}`, JSON.stringify(result), 'utf8', noop);
+      console.log(kleur.yellow('Wrote file to: '), kleur.green(filePath));
     }
     return this;
   };
+
+  /**
+   * Quick alias for the build function
+   */
+  b = this.build;
 }

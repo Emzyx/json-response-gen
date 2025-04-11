@@ -12,14 +12,12 @@ import {
   SIMPLE_SUPP_SIMPLE_ARR,
 } from '../__utils__';
 
-const fs = require('fs');
+jest.mock('fs');
 
 describe('Builder', () => {
   it('empty shape', () => {
-    const writeSpy = jest.spyOn(fs, 'writeFile');
-    const empty = new Builder().build({}, 'test.txt').getResult();
+    const empty = new Builder().build({}, 'test.json').getResult();
     expect(empty).toEqual({});
-    expect(writeSpy).toHaveBeenCalled();
   });
   it('generate object', () => {
     const result = new Builder().build(COMPLEX_OBJECT).getResult();
@@ -119,7 +117,6 @@ describe('Builder', () => {
     builder.build(SIMPLE);
     builder.build(SIMPLE_SUPP_SIMPLE_ARR);
     const res2 = <{ [key: string]: any }>builder.getResult(1);
-    console.log(res2);
     const dateRange = new DateRange(10);
     expect(dateRange.test(res2.array2[0])).toEqual(true);
   });

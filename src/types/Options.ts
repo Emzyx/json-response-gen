@@ -1,6 +1,6 @@
-import { BuildOptions } from './Builder';
+import { BuildProps } from './BuildProps';
 
 export type Options = {
-  build(buildOptions: BuildOptions, extraInfo?: {}): any | any[];
+  build(buildOptions?: BuildProps, extraInfo?: {}): any | any[];
   test(value: any): boolean;
 };

@@ -1,4 +1,4 @@
-import { BuildOptions, Options } from '../types';
+import { BuildProps, Options } from '../types';
 import RandExp from 'randexp';
 
 export class Regex implements Options {
@@ -8,9 +8,14 @@ export class Regex implements Options {
     this.pattern = pattern;
   }
 
-  build(buildOptions: BuildOptions, extraInfo?: {}): string {
+  build(buildOptions?: BuildProps, extraInfo?: {}): string {
     return new RandExp(this.pattern).gen();
   }
+
+  /**
+   * Quick alias for the build function
+   */
+  b = this.build;
 
   test(value: any): boolean {
     return this.pattern.test(value);

@@ -14,6 +14,6 @@
     "removeComments": true,
     "types": ["node", "jest"]
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["src", "cli.js"],
+  "exclude": ["node_modules", "dist"]
 }

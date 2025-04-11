@@ -19,4 +19,4 @@ export const DAY_RANGE = Object.freeze({
   LEAP: 29,
 });
 
-export const DEFAULT_DIR = '/__jgen__';
+export const DEFAULT_MOCKS_DIR = '__jgen__/mocks';

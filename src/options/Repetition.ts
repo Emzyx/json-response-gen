@@ -1,4 +1,4 @@
-import { BuildOptions, Options, RepetitionOptions } from '../types';
+import { BuildProps, Options, RepetitionProps } from '../types';
 import {
   get,
   handleValue,
@@ -11,7 +11,7 @@ import {
  */
 export class Repetition implements Options {
   shape: any;
-  options?: RepetitionOptions;
+  options?: RepetitionProps;
   sharedOptions?: boolean;
 
   /**
@@ -19,7 +19,7 @@ export class Repetition implements Options {
    * @param shape Object of the array element
    * @param repetitions Amount of elements in the array
    */
-  constructor(shape: any, options?: RepetitionOptions) {
+  constructor(shape: any, options?: RepetitionProps) {
     this.shape = shape;
     this.options = options;
     this.sharedOptions = !!options?.baseArrayPath;
@@ -28,7 +28,7 @@ export class Repetition implements Options {
   /**
    * @returns Array filled with randomly generated elements of described shape
    */
-  build(buildOptions: BuildOptions, extraInfo?: {}): any[] {
+  build(buildOptions: BuildProps, extraInfo?: {}): any[] {
     if (this.sharedOptions) {
       return this.buildShared(buildOptions, extraInfo);
     }
@@ -38,7 +38,12 @@ export class Repetition implements Options {
       .map(() => handleValue(this.shape, buildOptions));
   }
 
-  buildShared(buildOptions: BuildOptions, extraInfo = {}): any[] {
+  /**
+   * Quick alias for the build function
+   */
+  b = this.build;
+
+  buildShared(buildOptions: BuildProps, extraInfo = {}): any[] {
     const { getFromGeneration } = buildOptions;
     const { baseArrayPath, sharedKeysMap = {} } = this.options!;
 

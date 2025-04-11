@@ -10,7 +10,7 @@ describe('Shared', () => {
       map.set(key, val);
     };
 
-    const shared = new Shared('name', ALPHA_1(5));
+    const shared = new Shared('name', { value: ALPHA_1(5) });
     const res = shared.build({
       getSharedValue,
       addSharedValue,

@@ -3,6 +3,7 @@ import {
   ALPHA_1,
   ALPHA_NUMERIC,
   ALPHA_PHRASE,
+  C,
   DateRange,
   LOWER_ALPHA,
   NUMERIC,
@@ -24,10 +25,20 @@ export const COMPLEX_OBJECT = {
   },
   field2: new Repetition(
     {
+      randomValue: new C(() => Math.random()),
       arrField1: true,
-      arrField2: new Option([true, false], SELECTION_TYPES.RANDOM),
+      arrField2: new Option(
+        [
+          { arrField3: 'shouldSpread', arrField4: 'shouldAlsoSpread' },
+          ALPHA_PHRASE(5),
+        ],
+        {
+          selectionType: SELECTION_TYPES.IN_ORDER,
+          shouldSpread: true,
+        }
+      ),
     },
-    { repetitions: 1 }
+    { repetitions: 3 }
   ),
   field3: {
     subfieldDate: new DateRange(5),
@@ -35,7 +46,7 @@ export const COMPLEX_OBJECT = {
       {
         subArrayField1: new Option(
           [LOWER_ALPHA(5), UPPER_ALPHA(5), ALPHA(10)],
-          SELECTION_TYPES.RANDOM
+          { selectionType: SELECTION_TYPES.RANDOM }
         ),
         subArrayConstant: 'constant',
       },
@@ -75,7 +86,7 @@ export const MODERATELY_COMPLEX_ARRAY_SUPP = {
   thing: ALPHA_NUMERIC(5),
   users: new Repetition(
     {
-      name: { build: () => `${ALPHA_1(5).build({})} ${ALPHA_1(5).build({})}` },
+      name: new C(() => `${ALPHA_1(5).build({})} ${ALPHA_1(5).build({})}`),
       note: ALPHA_PHRASE(12),
       accountInformation: new Repetition(
         {
@@ -104,7 +115,7 @@ export const MODERATELY_COMPLEX_ARRAY_SUPP_INVALID_PATH = {
   thing: ALPHA_NUMERIC(5),
   users: new Repetition(
     {
-      name: { build: () => `${ALPHA_1(5).build({})} ${ALPHA_1(5).build({})}` },
+      name: new C(() => `${ALPHA_1(5).build({})} ${ALPHA_1(5).build({})}`),
       note: ALPHA_PHRASE(12),
       accountInformation: new Repetition(
         {
@@ -133,7 +144,7 @@ export const MODERATELY_COMPLEX_ARRAY_SUPP_SIMPLE_NESTED_SHAPE = {
   thing: ALPHA_NUMERIC(5),
   users: new Repetition(
     {
-      name: { build: () => `${ALPHA_1(5).build({})} ${ALPHA_1(5).build({})}` },
+      name: new C(() => `${ALPHA_1(5).build({})} ${ALPHA_1(5).build({})}`),
       note: ALPHA_PHRASE(12),
       accountInformation: new Repetition(new DateRange(10), {
         baseArrayPath: '?.accounts', // <- should look respective to parent array, i.e. root arr
@@ -154,7 +165,7 @@ export const MODERATELY_COMPLEX_ARRAY_SUPP_SIMPLE_NESTED_SHAPE = {
 };
 
 export const PARALLEL_NESTED_ARRAY = {
-  projectName: new Shared('name', ALPHA_1(10)),
+  projectName: new Shared('name', { value: ALPHA_1(10) }),
   class: new Shared('class'),
   userBase: new Repetition(
     {

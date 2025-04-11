@@ -1,16 +1,17 @@
-import { Regex } from '../options';
+import { C, Regex } from '../options';
 
+/**
+ * Literally just generates the number given of 'words' where thats just random text between 4-10 in length
+ */
 export const ALPHA_PHRASE = (wordCount: number) => {
-  return {
-    build: () => {
-      let phrase = ALPHA_1(4, 10)?.build({});
-      for (let i = 1; i < wordCount; i++) {
-        const next = LOWER_ALPHA(4, 10).build({});
-        phrase += ` ${next}`;
-      }
-      return phrase;
-    },
-  };
+  return new C(() => {
+    let phrase = ALPHA_1(4, 10)?.build({});
+    for (let i = 1; i < wordCount; i++) {
+      const next = LOWER_ALPHA(4, 10).build({});
+      phrase += ` ${next}`;
+    }
+    return phrase;
+  });
 };
 
 export const UPPER_ALPHA = (min: number, max = min) =>
@@ -54,7 +55,5 @@ export const EMAIL = (length = 9, domain?: string) => {
   }
   const dom =
     domain || `${ALPHA_NUMERIC(dCount).build({})}.${LOWER_ALPHA(3).build({})}`;
-  return {
-    build: () => `${ALPHA_NUMERIC(eCount).build({})}@${dom}`,
-  };
+  return new C(() => `${ALPHA_NUMERIC(eCount).build({})}@${dom}`);
 };

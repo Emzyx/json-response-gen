@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync } from 'fs';
-import { DAY_RANGE, DEFAULT_DIR } from '../constants';
+import { DAY_RANGE, DEFAULT_MOCKS_DIR } from '../constants';
 import { Options } from '../types';
 import path from 'path';
 
@@ -35,6 +35,11 @@ export const conditionalDatePrefix = (
   return `${dateNumber}`;
 };
 
+/**
+ * Util to change from a easy to define object on the user end, to a more practical one
+ * @param lookupMap
+ * @returns
+ */
 export const toReverseLookupMap = (
   lookupMap?: Object
 ): { [key: string]: string } => {
@@ -70,8 +75,11 @@ export const shouldGetFromExtraDetails = (path: string): [boolean, string] => {
   return [true, pathArr.slice(idx + 1).join('')];
 };
 
-export const prepDirs = (str: string) => {
-  const dir = DEFAULT_DIR;
+/**
+ * Check for path, and recursively create path to write files
+ */
+export const prepDirs = (str: string, writeDir?: string) => {
+  const dir = writeDir || DEFAULT_MOCKS_DIR;
   const fullPath = path.join(dir, str);
   const fullPath2 = fullPath.split('\\').join('/');
 

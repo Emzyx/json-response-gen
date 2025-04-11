@@ -1,10 +1,6 @@
 import { SelectionType } from './aliases';
 
-export type BuildOptions = {
-  /**
-   * Names for the files, defaults to non-descriptive names otherwise
-   */
-  names?: string[];
+export type BuildProps = {
   /**
    * Default number of repetitions when building arrays/Repetition class
    */
@@ -13,6 +9,8 @@ export type BuildOptions = {
    * Selection type for selecting value from Option class
    */
   selectionType?: SelectionType;
+
+  writeDir?: string;
 
   addSharedValue?: (key: string, value: any) => void;
   getSharedValue?: (key: string) => any;

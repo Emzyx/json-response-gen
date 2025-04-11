@@ -1,4 +1,4 @@
-export type RepetitionOptions = {
+export type RepetitionProps = {
   /**
    * Length of array if not shared, or not using the buildOptions
    */
