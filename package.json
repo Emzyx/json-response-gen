@@ -1,6 +1,6 @@
 {
   "name": "json-response-gen",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Repo for some utility functions to generate random data when you know the shape of data samples but cant get it",
   "author": "Emzyx",
   "contributors": [
@@ -15,7 +15,7 @@
     "build": "tsup",
     "check": "prettier . --check",
     "prettier": "prettier . --write",
-    "prepare": "npm run test && npm run check",
+    "prepare": "npm run test && npm run prettier",
     "test": "jest"
   },
   "files": [
@@ -33,6 +33,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/node": "^22.9.0",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
     "prettier": "3.3.3",
     "ts-jest": "^29.2.5",
