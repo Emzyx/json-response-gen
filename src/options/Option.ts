@@ -1,6 +1,6 @@
-import { SELECTION_TYPES } from '../constants/constants';
-import { BuildProps, OptionProps, Options } from '../types';
-import { hasTestFunc, handleValue } from '../utils';
+import { SELECTION_TYPES } from "../constants/constants";
+import { BuildProps, OptionProps, Options } from "../types";
+import { hasTestFunc, handleValue } from "../utils";
 
 export class Option implements Options {
   selectionType?: string;

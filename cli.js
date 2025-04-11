@@ -1,8 +1,8 @@
-const yargs = require('yargs');
-const path = require('path');
-const kleur = require('kleur');
+const yargs = require("yargs");
+const path = require("path");
+const kleur = require("kleur");
 
-const DEFAULT_TEMPLATE_DIR = '__jgen__/templates';
+const DEFAULT_TEMPLATE_DIR = "__jgen__/templates";
 
 const run = (maybeArgs) => {
   const args = maybeArgs || process.argv.slice(2);
@@ -11,13 +11,13 @@ const run = (maybeArgs) => {
   try {
     const resolvedPath = path.resolve(`${location}`);
     console.log(
-      kleur.yellow('Looking for template in: '),
-      kleur.blue(resolvedPath)
+      kleur.yellow("Looking for template in: "),
+      kleur.blue(resolvedPath),
     );
     const buildScript = require(resolvedPath);
     buildScript();
   } catch (e) {
-    console.error(kleur.yellow('Error: '), kleur.red(e));
+    console.error(kleur.yellow("Error: "), kleur.red(e));
   }
 };
 

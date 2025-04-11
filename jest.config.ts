@@ -1,17 +1,17 @@
-import { Config } from '@jest/types';
+import { Config } from "@jest/types";
 
 const config: Config.InitialOptions = {
   // automock: true,
   collectCoverage: true,
 
   collectCoverageFrom: [
-    'src/**/*.{js,jsx}',
-    'src/**/*.{ts,tsx}',
-    '!vendor/**/*.{js,jsx}',
-    '!**/node_modules/**',
+    "src/**/*.{js,jsx}",
+    "src/**/*.{ts,tsx}",
+    "!vendor/**/*.{js,jsx}",
+    "!**/node_modules/**",
   ],
-  testPathIgnorePatterns: ['__tests__/__utils__'],
-  coverageProvider: 'babel',
+  testPathIgnorePatterns: ["__tests__/__utils__"],
+  coverageProvider: "babel",
   coverageThreshold: {
     global: {
       branches: 100,
@@ -21,8 +21,8 @@ const config: Config.InitialOptions = {
     },
   },
   maxConcurrency: 5,
-  preset: 'ts-jest',
-  testEnvironment: 'node',
+  preset: "ts-jest",
+  testEnvironment: "node",
   verbose: true,
 };
 

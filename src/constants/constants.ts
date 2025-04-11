@@ -1,6 +1,6 @@
 export const SELECTION_TYPES = Object.freeze({
-  IN_ORDER: 'IN_ORDER',
-  RANDOM: 'RANDOM',
+  IN_ORDER: "IN_ORDER",
+  RANDOM: "RANDOM",
 });
 
 export const DAY_RANGE = Object.freeze({
@@ -19,4 +19,4 @@ export const DAY_RANGE = Object.freeze({
   LEAP: 29,
 });
 
-export const DEFAULT_MOCKS_DIR = '__jgen__/mocks';
+export const DEFAULT_MOCKS_DIR = "__jgen__/mocks";

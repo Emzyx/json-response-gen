@@ -1,4 +1,4 @@
-import { SELECTION_TYPES } from '../constants';
+import { SELECTION_TYPES } from "../constants";
 
 export type InputType = object | any[];
 export type OutputType = object | any[];

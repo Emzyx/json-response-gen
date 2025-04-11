@@ -1,6 +1,6 @@
-import { NUMERIC } from '../utils/regexOptions';
-import { BuildProps, Options } from '../types';
-import { conditionalDatePrefix, getDay } from '../utils';
+import { NUMERIC } from "../utils/regexOptions";
+import { BuildProps, Options } from "../types";
+import { conditionalDatePrefix, getDay } from "../utils";
 
 /**
  * Builds a random date in MM/DD/YYYY

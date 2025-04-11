@@ -1,8 +1,8 @@
-import { writeFile } from 'fs';
-import { SELECTION_TYPES } from '../constants';
-import { BuildProps, InputType, OutputType } from '../types';
-import { get, handleValue, noop, prepDirs } from '../utils';
-import kleur from 'kleur';
+import { writeFile } from "fs";
+import { SELECTION_TYPES } from "../constants";
+import { BuildProps, InputType, OutputType } from "../types";
+import { get, handleValue, noop, prepDirs } from "../utils";
+import kleur from "kleur";
 
 const defaultOptions: BuildProps = {
   repetitions: 3,
@@ -71,7 +71,7 @@ export class Builder {
    * @returns
    */
   getFromGeneration = (key: string, genNumber = 0): any => {
-    if (key === '/') return this.results[genNumber];
+    if (key === "/") return this.results[genNumber];
     return get(this.results[genNumber], key, undefined);
   };
 
@@ -86,8 +86,8 @@ export class Builder {
     const shouldSave = !!fileName;
     if (shouldSave) {
       const filePath = prepDirs(fileName, this.options?.writeDir);
-      writeFile(`${filePath}`, JSON.stringify(result), 'utf8', noop);
-      console.log(kleur.yellow('Wrote file to: '), kleur.green(filePath));
+      writeFile(`${filePath}`, JSON.stringify(result), "utf8", noop);
+      console.log(kleur.yellow("Wrote file to: "), kleur.green(filePath));
     }
     return this;
   };

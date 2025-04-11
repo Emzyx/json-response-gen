@@ -9,19 +9,19 @@ import {
   SELECTION_TYPES,
   SelectionType,
   toReverseLookupMap,
-} from '../src';
+} from "../src";
 
-jest.mock('fs');
+jest.mock("fs");
 
-describe('utils tests', () => {
-  describe('noop', () => {
-    it('should have called noop', () => {
+describe("utils tests", () => {
+  describe("noop", () => {
+    it("should have called noop", () => {
       noop();
       expect(noop()).not.toBeDefined();
     });
   });
-  describe('type guard tests', () => {
-    it('should pass for Options', () => {
+  describe("type guard tests", () => {
+    it("should pass for Options", () => {
       const selection: SelectionType = SELECTION_TYPES.RANDOM;
       const option: Options = {
         build: () => {},
@@ -34,8 +34,8 @@ describe('utils tests', () => {
     });
   });
 
-  describe('leap date tests', () => {
-    it('should pass leap years', () => {
+  describe("leap date tests", () => {
+    it("should pass leap years", () => {
       const year3 = 3;
       const year298 = 298;
       const year1700 = 1700;
@@ -46,7 +46,7 @@ describe('utils tests', () => {
       expect(isLeapYear(year2000)).toEqual(true);
     });
 
-    it('should get leap day', () => {
+    it("should get leap day", () => {
       const month2 = 2;
       const month10 = 10;
       const year3 = 3;
@@ -61,51 +61,51 @@ describe('utils tests', () => {
     });
   });
 
-  describe('reverse lookup creation tests', () => {
-    it('should generate reverse lookup with default behavior', () => {
+  describe("reverse lookup creation tests", () => {
+    it("should generate reverse lookup with default behavior", () => {
       const ogMap = undefined;
       const resultMap = {};
       expect(toReverseLookupMap(ogMap!)).toEqual(resultMap);
     });
 
-    it('should generate reverse lookup', () => {
+    it("should generate reverse lookup", () => {
       const ogMap = {
-        originalKey1: ['newKey1', 'path1.newKey1'],
-        'originalKey2.originalSubkey': [
-          'path2.subPath.newKey2',
-          'path2.subPath.subSubPath.newKey2',
+        originalKey1: ["newKey1", "path1.newKey1"],
+        "originalKey2.originalSubkey": [
+          "path2.subPath.newKey2",
+          "path2.subPath.subSubPath.newKey2",
         ],
       };
       const resultMap = {
-        newKey1: 'originalKey1',
-        'path1.newKey1': 'originalKey1',
-        'path2.subPath.newKey2': 'originalKey2.originalSubkey',
-        'path2.subPath.subSubPath.newKey2': 'originalKey2.originalSubkey',
+        newKey1: "originalKey1",
+        "path1.newKey1": "originalKey1",
+        "path2.subPath.newKey2": "originalKey2.originalSubkey",
+        "path2.subPath.subSubPath.newKey2": "originalKey2.originalSubkey",
       };
       expect(toReverseLookupMap(ogMap)).toEqual(resultMap);
     });
 
-    it('should generate reverse lookup with generic key', () => {
+    it("should generate reverse lookup with generic key", () => {
       const ogMap = {
-        'originalKey.originalSubkey': [],
-        'originalKey2.originalSubkey2.biggestSubkey': [],
+        "originalKey.originalSubkey": [],
+        "originalKey2.originalSubkey2.biggestSubkey": [],
       };
       const resultMap = {
-        originalSubkey: 'originalSubkey',
-        biggestSubkey: 'biggestSubkey',
+        originalSubkey: "originalSubkey",
+        biggestSubkey: "biggestSubkey",
       };
       expect(toReverseLookupMap(ogMap)).toEqual(resultMap);
     });
   });
 
-  describe('Path tests', () => {
-    it('should return valid path', () => {
-      const fileName = 'fileName.txt';
+  describe("Path tests", () => {
+    it("should return valid path", () => {
+      const fileName = "fileName.txt";
       const path = prepDirs(fileName);
       expect(path).toEqual(`${DEFAULT_MOCKS_DIR}/${fileName}`);
     });
-    it('should return valid path', () => {
-      const fileName = '/boogster/fileName.txt';
+    it("should return valid path", () => {
+      const fileName = "/boogster/fileName.txt";
       const path = prepDirs(fileName);
       expect(path).toEqual(`${DEFAULT_MOCKS_DIR}${fileName}`);
     });

@@ -1,4 +1,4 @@
-import { SelectionType } from './aliases';
+import { SelectionType } from "./aliases";
 
 export type BuildProps = {
   /**

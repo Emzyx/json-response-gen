@@ -12,8 +12,11 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "jest",
-    "build": "tsup"
+    "build": "tsup",
+    "check": "prettier . --check",
+    "prettier": "prettier . --write",
+    "prepare": "npm run test && npm run check",
+    "test": "jest"
   },
   "files": [
     "dist",

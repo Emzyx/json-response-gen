@@ -1,5 +1,5 @@
-import { BuildProps, Options } from '../types';
-import RandExp from 'randexp';
+import { BuildProps, Options } from "../types";
+import RandExp from "randexp";
 
 export class Regex implements Options {
   pattern: RegExp;

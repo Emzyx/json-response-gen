@@ -1,4 +1,4 @@
-import { BuildProps } from './BuildProps';
+import { BuildProps } from "./BuildProps";
 
 export type Options = {
   build(buildOptions?: BuildProps, extraInfo?: {}): any | any[];

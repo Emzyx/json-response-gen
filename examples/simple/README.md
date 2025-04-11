@@ -13,7 +13,7 @@
 
 ```typescript
 const OBJECT = {
-  cookie: new Shared('cookie', { value: ALPHA_NUMERIC(20) }),
+  cookie: new Shared("cookie", { value: ALPHA_NUMERIC(20) }),
   field1: {
     subfield1: ALPHA_NUMERIC(10),
     subfield2: NUMERIC(5),
@@ -24,29 +24,29 @@ const OBJECT = {
       arrField1: true,
       arrField2: new Option(
         [
-          { arrField3: 'shouldSpread', arrField4: 'shouldAlsoSpread' },
+          { arrField3: "shouldSpread", arrField4: "shouldAlsoSpread" },
           ALPHA_PHRASE(5),
         ],
         {
           selectionType: SELECTION_TYPES.IN_ORDER,
           shouldSpread: true,
-        }
+        },
       ),
     },
-    { repetitions: 3 }
+    { repetitions: 3 },
   ),
   field3: {
     subfieldDate: new DateRange(5),
-    subFieldCookie: new Shared('cookie'),
+    subFieldCookie: new Shared("cookie"),
     subArray: new Repetition(
       {
         subArrayField1: new Option(
           [LOWER_ALPHA(5), UPPER_ALPHA(5), ALPHA(10)],
-          { selectionType: SELECTION_TYPES.RANDOM }
+          { selectionType: SELECTION_TYPES.RANDOM },
         ),
-        subArrayConstant: 'constant',
+        subArrayConstant: "constant",
       },
-      { repetitions: 3 }
+      { repetitions: 3 },
     ),
   },
 };

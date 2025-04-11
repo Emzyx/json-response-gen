@@ -1,7 +1,7 @@
-import { ALPHA, ALPHA_1, Shared } from '../../src';
+import { ALPHA, ALPHA_1, Shared } from "../../src";
 
-describe('Shared', () => {
-  it('should pass test', () => {
+describe("Shared", () => {
+  it("should pass test", () => {
     const map = new Map();
     const getSharedValue = (key: string) => {
       return map.get(key);
@@ -10,7 +10,7 @@ describe('Shared', () => {
       map.set(key, val);
     };
 
-    const shared = new Shared('name', { value: ALPHA_1(5) });
+    const shared = new Shared("name", { value: ALPHA_1(5) });
     const res = shared.build({
       getSharedValue,
       addSharedValue,

@@ -1,10 +1,10 @@
-import { BuildProps, Options, RepetitionProps } from '../types';
+import { BuildProps, Options, RepetitionProps } from "../types";
 import {
   get,
   handleValue,
   shouldGetFromExtraDetails,
   toReverseLookupMap,
-} from '../utils';
+} from "../utils";
 
 /**
  * A class to use when describing an array shape
@@ -48,7 +48,7 @@ export class Repetition implements Options {
     const { baseArrayPath, sharedKeysMap = {} } = this.options!;
 
     const [shouldGetFromExtra, newPath] = shouldGetFromExtraDetails(
-      baseArrayPath!
+      baseArrayPath!,
     );
 
     let baseArray: any[];

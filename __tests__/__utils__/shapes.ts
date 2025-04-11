@@ -13,7 +13,7 @@ import {
   Shared,
   UPPER_ALPHA,
   UPPER_ALPHA_NUMERIC,
-} from '../../src';
+} from "../../src";
 
 /**
  * general example of an object
@@ -29,16 +29,16 @@ export const COMPLEX_OBJECT = {
       arrField1: true,
       arrField2: new Option(
         [
-          { arrField3: 'shouldSpread', arrField4: 'shouldAlsoSpread' },
+          { arrField3: "shouldSpread", arrField4: "shouldAlsoSpread" },
           ALPHA_PHRASE(5),
         ],
         {
           selectionType: SELECTION_TYPES.IN_ORDER,
           shouldSpread: true,
-        }
+        },
       ),
     },
-    { repetitions: 3 }
+    { repetitions: 3 },
   ),
   field3: {
     subfieldDate: new DateRange(5),
@@ -46,11 +46,11 @@ export const COMPLEX_OBJECT = {
       {
         subArrayField1: new Option(
           [LOWER_ALPHA(5), UPPER_ALPHA(5), ALPHA(10)],
-          { selectionType: SELECTION_TYPES.RANDOM }
+          { selectionType: SELECTION_TYPES.RANDOM },
         ),
-        subArrayConstant: 'constant',
+        subArrayConstant: "constant",
       },
-      { repetitions: 5 }
+      { repetitions: 5 },
     ),
   },
 };
@@ -60,12 +60,12 @@ export const COMPLEX_OBJECT = {
  */
 export const NESTED_10_ARRAY = new Repetition(
   new Repetition(0, { repetitions: 10 }),
-  { repetitions: 10 }
+  { repetitions: 10 },
 );
 
 export const NESTED_SIMPLE_OBJECT_ARRAY = new Repetition(
   new Repetition({ date: new DateRange(4) }, { repetitions: 10 }),
-  { repetitions: 10 }
+  { repetitions: 10 },
 );
 
 export const MODERATELY_COMPLEX_ARRAY = [
@@ -77,7 +77,7 @@ export const MODERATELY_COMPLEX_ARRAY = [
         accountNumber: NUMERIC(10),
         token: UPPER_ALPHA_NUMERIC(12),
       },
-      { repetitions: 4 }
+      { repetitions: 4 },
     ),
   },
 ];
@@ -93,21 +93,21 @@ export const MODERATELY_COMPLEX_ARRAY_SUPP = {
           rando: LOWER_ALPHA(10),
         },
         {
-          baseArrayPath: '?.accounts', // <- should look respective to parent array, i.e. root arr
+          baseArrayPath: "?.accounts", // <- should look respective to parent array, i.e. root arr
           sharedKeysMap: {
-            toShare: ['accountNumber'],
-            toRename: { token: ['accountToken'] },
+            toShare: ["accountNumber"],
+            toRename: { token: ["accountToken"] },
           },
-        }
+        },
       ),
     },
     {
-      baseArrayPath: '/',
+      baseArrayPath: "/",
       sharedKeysMap: {
-        toShare: ['identifier'],
-        toRename: { user: ['username'] },
+        toShare: ["identifier"],
+        toRename: { user: ["username"] },
       },
-    }
+    },
   ),
 };
 
@@ -122,21 +122,21 @@ export const MODERATELY_COMPLEX_ARRAY_SUPP_INVALID_PATH = {
           rando: LOWER_ALPHA(10),
         },
         {
-          baseArrayPath: '?.identifier', // <- should look respective to parent array, i.e. root arr
+          baseArrayPath: "?.identifier", // <- should look respective to parent array, i.e. root arr
           sharedKeysMap: {
-            toShare: ['accountNumber'],
-            toRename: { token: ['accountToken'] },
+            toShare: ["accountNumber"],
+            toRename: { token: ["accountToken"] },
           },
-        }
+        },
       ),
     },
     {
-      baseArrayPath: '/',
+      baseArrayPath: "/",
       sharedKeysMap: {
-        toShare: ['identifier'],
-        toRename: { user: ['username'] },
+        toShare: ["identifier"],
+        toRename: { user: ["username"] },
       },
-    }
+    },
   ),
 };
 
@@ -147,26 +147,26 @@ export const MODERATELY_COMPLEX_ARRAY_SUPP_SIMPLE_NESTED_SHAPE = {
       name: new C(() => `${ALPHA_1(5).build({})} ${ALPHA_1(5).build({})}`),
       note: ALPHA_PHRASE(12),
       accountInformation: new Repetition(new DateRange(10), {
-        baseArrayPath: '?.accounts', // <- should look respective to parent array, i.e. root arr
+        baseArrayPath: "?.accounts", // <- should look respective to parent array, i.e. root arr
         sharedKeysMap: {
-          toShare: ['accountNumber'],
-          toRename: { token: ['accountToken'] },
+          toShare: ["accountNumber"],
+          toRename: { token: ["accountToken"] },
         },
       }),
     },
     {
-      baseArrayPath: '/',
+      baseArrayPath: "/",
       sharedKeysMap: {
-        toShare: ['identifier'],
-        toRename: { user: ['username'] },
+        toShare: ["identifier"],
+        toRename: { user: ["username"] },
       },
-    }
+    },
   ),
 };
 
 export const PARALLEL_NESTED_ARRAY = {
-  projectName: new Shared('name', { value: ALPHA_1(10) }),
-  class: new Shared('class'),
+  projectName: new Shared("name", { value: ALPHA_1(10) }),
+  class: new Shared("class"),
   userBase: new Repetition(
     {
       user: ALPHA(10),
@@ -176,10 +176,10 @@ export const PARALLEL_NESTED_ARRAY = {
           accountNumber: NUMERIC(10),
           token: UPPER_ALPHA_NUMERIC(12),
         },
-        { repetitions: 2 }
+        { repetitions: 2 },
       ),
     },
-    { repetitions: 3 }
+    { repetitions: 3 },
   ),
   notes: new Repetition(
     {
@@ -189,45 +189,45 @@ export const PARALLEL_NESTED_ARRAY = {
         {
           tag: LOWER_ALPHA(5),
         },
-        { repetitions: 3 }
+        { repetitions: 3 },
       ),
     },
-    { repetitions: 5 }
+    { repetitions: 5 },
   ),
 };
 
 export const PARALLEL_NESTED_ARRAY_SUPP = {
-  projectName: new Shared('name'),
+  projectName: new Shared("name"),
   allAccounts: new Repetition(
     new Repetition(
       {},
       {
-        baseArrayPath: '?.accounts',
+        baseArrayPath: "?.accounts",
         sharedKeysMap: {
           toRename: {
-            token: ['accountToken', 'userToken'],
+            token: ["accountToken", "userToken"],
           },
-          toShare: ['accountNumber'],
+          toShare: ["accountNumber"],
         },
-      }
+      },
     ),
     {
-      baseArrayPath: 'userBase',
-    }
+      baseArrayPath: "userBase",
+    },
   ),
   allTags: new Repetition(
     new Repetition(
       {},
       {
-        baseArrayPath: '?.tags',
+        baseArrayPath: "?.tags",
         sharedKeysMap: {
-          toShare: ['tag'],
+          toShare: ["tag"],
         },
-      }
+      },
     ),
     {
-      baseArrayPath: 'notes',
-    }
+      baseArrayPath: "notes",
+    },
   ),
 };
 
@@ -247,8 +247,8 @@ export const SIMPLE_SUPP_INVALID_PATH = {
       random2: ALPHA(3),
     },
     {
-      baseArrayPath: 'name',
-    }
+      baseArrayPath: "name",
+    },
   ),
 };
 
@@ -258,7 +258,7 @@ export const SIMPLE_SUPP_SIMPLE_ARR = {
       random2: ALPHA(3),
     },
     {
-      baseArrayPath: 'array2',
-    }
+      baseArrayPath: "array2",
+    },
   ),
 };

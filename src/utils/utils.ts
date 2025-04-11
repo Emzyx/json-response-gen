@@ -1,7 +1,7 @@
-import { existsSync, mkdirSync } from 'fs';
-import { DAY_RANGE, DEFAULT_MOCKS_DIR } from '../constants';
-import { Options } from '../types';
-import path from 'path';
+import { existsSync, mkdirSync } from "fs";
+import { DAY_RANGE, DEFAULT_MOCKS_DIR } from "../constants";
+import { Options } from "../types";
+import path from "path";
 
 export function noop() {}
 
@@ -21,13 +21,13 @@ export const isLeapYear = (year: number): boolean => {
 };
 
 export const getDay = (month: number, year: number): number => {
-  const dayKey = month === 2 && isLeapYear(year) ? 'LEAP' : month;
+  const dayKey = month === 2 && isLeapYear(year) ? "LEAP" : month;
   return DAY_RANGE[dayKey as keyof typeof DAY_RANGE];
 };
 
 export const conditionalDatePrefix = (
   dateNumber: number,
-  prefix = '0'
+  prefix = "0",
 ): string => {
   if (dateNumber < 10) {
     return `${prefix}${dateNumber}`;
@@ -41,7 +41,7 @@ export const conditionalDatePrefix = (
  * @returns
  */
 export const toReverseLookupMap = (
-  lookupMap?: Object
+  lookupMap?: Object,
 ): { [key: string]: string } => {
   if (!lookupMap) return {};
   const reverseLookup = Object.keys(lookupMap).reduce((prevMap, currKey) => {
@@ -50,7 +50,7 @@ export const toReverseLookupMap = (
     );
     let keyMap: Object;
     if (stringArr.length === 0) {
-      const lastKey = currKey.split('.').at(-1);
+      const lastKey = currKey.split(".").at(-1);
       keyMap = { [lastKey!]: lastKey };
     } else {
       keyMap = stringArr.reduce((prev, currValue) => {
@@ -69,10 +69,10 @@ export const toReverseLookupMap = (
 };
 
 export const shouldGetFromExtraDetails = (path: string): [boolean, string] => {
-  const pathArr = path.split('.');
-  const idx = pathArr.findIndex((str) => str === '?');
+  const pathArr = path.split(".");
+  const idx = pathArr.findIndex((str) => str === "?");
   if (idx === -1) return [false, path];
-  return [true, pathArr.slice(idx + 1).join('')];
+  return [true, pathArr.slice(idx + 1).join("")];
 };
 
 /**
@@ -81,9 +81,9 @@ export const shouldGetFromExtraDetails = (path: string): [boolean, string] => {
 export const prepDirs = (str: string, writeDir?: string) => {
   const dir = writeDir || DEFAULT_MOCKS_DIR;
   const fullPath = path.join(dir, str);
-  const fullPath2 = fullPath.split('\\').join('/');
+  const fullPath2 = fullPath.split("\\").join("/");
 
-  const dirPath = fullPath.split('\\').slice(0, -1).join('/');
+  const dirPath = fullPath.split("\\").slice(0, -1).join("/");
 
   if (!existsSync(dirPath)) {
     mkdirSync(dirPath, { recursive: true });

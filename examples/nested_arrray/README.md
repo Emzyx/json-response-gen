@@ -21,7 +21,7 @@ const SMALL_NESTED_ARRAY = [
         accountNumber: NUMERIC(10),
         token: UPPER_ALPHA_NUMERIC(12),
       },
-      { repetitions: 4 }
+      { repetitions: 4 },
     ),
   },
 ];
@@ -33,33 +33,33 @@ const SMALL_NESTED_ARRAY = [
 ```javascript
 [
   {
-    user: 'mMyPMnzUvN',
-    identifier: '6482221',
+    user: "mMyPMnzUvN",
+    identifier: "6482221",
     accounts: [
-      { accountNumber: '5762592495', token: '6EAAZBTALXII' },
-      { accountNumber: '1803693145', token: 'LNDQSJROZWOH' },
-      { accountNumber: '7565267988', token: 'SRQ2NQ8XUISC' },
-      { accountNumber: '9917266489', token: 'U2C81D165723' },
+      { accountNumber: "5762592495", token: "6EAAZBTALXII" },
+      { accountNumber: "1803693145", token: "LNDQSJROZWOH" },
+      { accountNumber: "7565267988", token: "SRQ2NQ8XUISC" },
+      { accountNumber: "9917266489", token: "U2C81D165723" },
     ],
   },
   {
-    user: 'UdSuYdPfae',
-    identifier: '9996702',
+    user: "UdSuYdPfae",
+    identifier: "9996702",
     accounts: [
-      { accountNumber: '8931664673', token: 'S8OFWYBJ2TD3' },
-      { accountNumber: '3785891773', token: 'LIYLIPGKCMNM' },
-      { accountNumber: '8300511963', token: 'Z7KJ1LBTJNU1' },
-      { accountNumber: '6894508200', token: 'W0886G6ZSWFW' },
+      { accountNumber: "8931664673", token: "S8OFWYBJ2TD3" },
+      { accountNumber: "3785891773", token: "LIYLIPGKCMNM" },
+      { accountNumber: "8300511963", token: "Z7KJ1LBTJNU1" },
+      { accountNumber: "6894508200", token: "W0886G6ZSWFW" },
     ],
   },
   {
-    user: 'gDQgVQqMaC',
-    identifier: '7329551',
+    user: "gDQgVQqMaC",
+    identifier: "7329551",
     accounts: [
-      { accountNumber: '8829467505', token: 'Y04WL9CC39JA' },
-      { accountNumber: '3433725395', token: 'WA7AS4IA8GZE' },
-      { accountNumber: '4784087555', token: '5W8BO5N1UQB0' },
-      { accountNumber: '9751928279', token: '4HODN6MR6BP1' },
+      { accountNumber: "8829467505", token: "Y04WL9CC39JA" },
+      { accountNumber: "3433725395", token: "WA7AS4IA8GZE" },
+      { accountNumber: "4784087555", token: "5W8BO5N1UQB0" },
+      { accountNumber: "9751928279", token: "4HODN6MR6BP1" },
     ],
   },
 ];
@@ -92,21 +92,21 @@ const SUPPLEMENT = {
           rando: LOWER_ALPHA(10),
         },
         {
-          baseArrayPath: '?.accounts',
+          baseArrayPath: "?.accounts",
           sharedKeysMap: {
-            toShare: ['accountNumber'],
-            toRename: { token: ['accountToken'] },
+            toShare: ["accountNumber"],
+            toRename: { token: ["accountToken"] },
           },
-        }
+        },
       ),
     },
     {
-      baseArrayPath: '/',
+      baseArrayPath: "/",
       sharedKeysMap: {
-        toShare: ['identifier'],
-        toRename: { user: ['username'] },
+        toShare: ["identifier"],
+        toRename: { user: ["username"] },
       },
-    }
+    },
   ),
 };
 ```

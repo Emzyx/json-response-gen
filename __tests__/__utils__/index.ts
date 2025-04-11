@@ -1,3 +1,3 @@
-import { DateRange, Option, Repetition } from '../../src';
+import { DateRange, Option, Repetition } from "../../src";
 
-export * from './shapes';
+export * from "./shapes";

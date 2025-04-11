@@ -1,4 +1,4 @@
-import { Builder, DateRange } from '../../src';
+import { Builder, DateRange } from "../../src";
 import {
   COMPLEX_OBJECT,
   MODERATELY_COMPLEX_ARRAY,
@@ -10,30 +10,30 @@ import {
   SIMPLE,
   SIMPLE_SUPP_INVALID_PATH,
   SIMPLE_SUPP_SIMPLE_ARR,
-} from '../__utils__';
+} from "../__utils__";
 
-jest.mock('fs');
+jest.mock("fs");
 
-describe('Builder', () => {
-  it('empty shape', () => {
-    const empty = new Builder().build({}, 'test.json').getResult();
+describe("Builder", () => {
+  it("empty shape", () => {
+    const empty = new Builder().build({}, "test.json").getResult();
     expect(empty).toEqual({});
   });
-  it('generate object', () => {
+  it("generate object", () => {
     const result = new Builder().build(COMPLEX_OBJECT).getResult();
     expect(Object.keys(<Object>result).length).toEqual(3);
   });
 
-  it('test map interactions', () => {
+  it("test map interactions", () => {
     const builder = new Builder();
-    builder.addSharedValue('k', 'v');
-    const val = builder.getSharedValue('k');
-    expect(val).toEqual('v');
+    builder.addSharedValue("k", "v");
+    const val = builder.getSharedValue("k");
+    expect(val).toEqual("v");
   });
 
-  it('test result interactions', () => {
+  it("test result interactions", () => {
     const builder = new Builder();
-    const arr = [{ mock: 'mock' }];
+    const arr = [{ mock: "mock" }];
     builder.addResult(arr);
     const val = builder.getResult();
     expect(val).toEqual(arr);
@@ -41,7 +41,7 @@ describe('Builder', () => {
     expect(resultsArr.length).toEqual(1);
   });
 
-  it('should generate two objects to shared', () => {
+  it("should generate two objects to shared", () => {
     const builder = new Builder();
     builder.build(MODERATELY_COMPLEX_ARRAY);
     expect(builder.getResults().length).toEqual(1);
@@ -67,7 +67,7 @@ describe('Builder', () => {
     expect(pass).toEqual(true);
   });
 
-  it('should generate two objects with shared values, and correct shared from relative arrays', () => {
+  it("should generate two objects with shared values, and correct shared from relative arrays", () => {
     const builder = new Builder();
     builder.build(PARALLEL_NESTED_ARRAY);
     expect(builder.getResults().length).toEqual(1);
@@ -87,7 +87,7 @@ describe('Builder', () => {
     expect(pass).toEqual(true);
   });
 
-  it('should return empty arrs for invalid path', () => {
+  it("should return empty arrs for invalid path", () => {
     const builder = new Builder();
     builder.build(SIMPLE);
     builder.build(SIMPLE_SUPP_INVALID_PATH);
@@ -95,7 +95,7 @@ describe('Builder', () => {
     expect(res2.array2).toEqual([]);
   });
 
-  it('should return empty arrs for invalid path in nested', () => {
+  it("should return empty arrs for invalid path in nested", () => {
     const builder = new Builder();
     builder.build(MODERATELY_COMPLEX_ARRAY);
     builder.build(MODERATELY_COMPLEX_ARRAY_SUPP_INVALID_PATH);
@@ -103,7 +103,7 @@ describe('Builder', () => {
     expect(res2.users[0].accountInformation).toEqual([]);
   });
 
-  it('should return generation when nested shape resolves to a non object', () => {
+  it("should return generation when nested shape resolves to a non object", () => {
     const builder = new Builder();
     builder.build(MODERATELY_COMPLEX_ARRAY);
     builder.build(MODERATELY_COMPLEX_ARRAY_SUPP_SIMPLE_NESTED_SHAPE);
@@ -112,7 +112,7 @@ describe('Builder', () => {
     expect(dateRange.test(res2.users[0].accountInformation[0])).toEqual(true);
   });
 
-  it('should return copy when given path resolves to an array of non iterables', () => {
+  it("should return copy when given path resolves to an array of non iterables", () => {
     const builder = new Builder();
     builder.build(SIMPLE);
     builder.build(SIMPLE_SUPP_SIMPLE_ARR);

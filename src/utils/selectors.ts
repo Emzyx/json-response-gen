@@ -7,13 +7,13 @@
 export const get = (
   obj: object | string,
   path: string[] | string,
-  defaultValue: any
+  defaultValue: any,
 ) => {
   if (!path) return undefined;
   const pathArray = Array.isArray(path) ? path : path.match(/([^.[\]])+/g);
   const result = pathArray?.reduce(
     (prevObj, key) => prevObj && prevObj[key as keyof typeof prevObj],
-    obj
+    obj,
   );
   return result === undefined ? defaultValue : result;
 };

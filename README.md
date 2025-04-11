@@ -68,20 +68,20 @@ const {
   Builder,
   Option,
   SELECTION_TYPES,
-} = require('json-response-gen');
+} = require("json-response-gen");
 
 const shape = {
   name: ALPHA_1(6),
   items: [
     {
       itemName: ALPHA_1(4, 7),
-      option: new Option(['big_dawg', 'smol_cat'], SELECTION_TYPES.RANDOM),
+      option: new Option(["big_dawg", "smol_cat"], SELECTION_TYPES.RANDOM),
     },
   ],
 };
 
 const build = () => {
-  new Builder({}).build(shape, 'success.json');
+  new Builder({}).build(shape, "success.json");
 };
 
 module.exports = build;
@@ -102,7 +102,7 @@ This is the root class, you'll want to use this to wrap around your shape, and i
  * Simple Usage: Given no options, builds the shape and saves it to a file 'success.json' in the default __jgen__/mocks directory
  * Can hold on to the builder to chain.
  */
-const builder = new Builder().build(shape, 'success.json');
+const builder = new Builder().build(shape, "success.json");
 ```
 
 <details>
@@ -576,7 +576,7 @@ This is the Shared class, a key in which to store the given `option` (a value to
 /**
  * Simple Usage: Takes a key, and share  value, stores it, and allows reuse.
  */
-new Shared('identifier', { value: ALPHA(5, 10) });
+new Shared("identifier", { value: ALPHA(5, 10) });
 ```
 
 <details>

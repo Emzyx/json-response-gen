@@ -1,4 +1,4 @@
-import { BuildProps, Options } from '../types';
+import { BuildProps, Options } from "../types";
 
 /**
  * Function to plug and play custom functions has an alias for less typing

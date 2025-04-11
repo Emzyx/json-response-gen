@@ -1,4 +1,4 @@
-import { C, Regex } from '../options';
+import { C, Regex } from "../options";
 
 /**
  * Literally just generates the number given of 'words' where thats just random text between 4-10 in length

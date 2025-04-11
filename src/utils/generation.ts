@@ -1,11 +1,11 @@
-import { Repetition } from '../options';
-import { BuildProps } from '../types';
-import { implementsOptions } from './utils';
+import { Repetition } from "../options";
+import { BuildProps } from "../types";
+import { implementsOptions } from "./utils";
 
 export const handleValue = (
   value: any,
   buildOptions: BuildProps,
-  extraInfo?: {}
+  extraInfo?: {},
 ): any => {
   if (implementsOptions(value)) {
     return value.build(buildOptions, extraInfo);
@@ -20,7 +20,7 @@ export const handleValue = (
 export const handleObject = (
   shape: object,
   buildOptions: BuildProps,
-  extraInfo?: {}
+  extraInfo?: {},
 ): object => {
   const keyArr = Object.keys(shape);
   if (keyArr.length === 0) {

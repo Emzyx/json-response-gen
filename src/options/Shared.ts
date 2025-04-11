@@ -1,5 +1,5 @@
-import { BuildProps, Options, SharedProps } from '../types';
-import { handleValue } from '../utils';
+import { BuildProps, Options, SharedProps } from "../types";
+import { handleValue } from "../utils";
 
 export class Shared implements Options {
   key: string;
