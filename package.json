@@ -15,7 +15,7 @@
     "build": "tsup",
     "check": "prettier . --check",
     "prettier": "prettier . --write",
-    "prepare": "npm run test && npm run prettier",
+    "prepare": "npm run test && npm run check",
     "test": "jest"
   },
   "devDependencies": {
