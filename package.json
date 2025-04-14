@@ -1,6 +1,6 @@
 {
   "name": "json-response-gen",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Repo for some utility functions to generate random data when you know the shape of data samples but cant get it",
   "author": "Emzyx",
   "contributors": [
@@ -18,24 +18,13 @@
     "prepare": "npm run test && npm run prettier",
     "test": "jest"
   },
-  "files": [
-    "dist",
-    "bin",
-    "cli"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Emzyx/json-response-gen.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Emzyx/json-response-gen/issues"
-  },
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/node": "^22.9.0",
     "husky": "^9.1.7",
     "jest": "^29.7.0",
     "prettier": "3.3.3",
+    "semantic-release": "^24.2.3",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "tsup": "^8.3.0",
@@ -52,6 +41,18 @@
     "json-response-gen": "./bin/json-response-gen.js",
     "jgen": "./bin/json-response-gen.js"
   },
+  "files": [
+    "dist",
+    "bin",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Emzyx/json-response-gen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Emzyx/json-response-gen/issues"
+  },
   "keywords": [
     "json",
     "testing",
@@ -59,5 +60,11 @@
     "cli",
     "json-response-gen",
     "json-generation"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  }
 }
