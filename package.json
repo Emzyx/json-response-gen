@@ -44,7 +44,7 @@
   "files": [
     "dist",
     "bin",
-    "cli"
+    "./cli.js"
   ],
   "repository": {
     "type": "git",
